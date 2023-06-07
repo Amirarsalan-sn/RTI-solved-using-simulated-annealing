@@ -6,11 +6,11 @@ import random
 import math
 
 cnf = CnfResolver('Input.cnf')
-max_iteration = 10 * cnf.clauses_size
+max_iteration = 100 * cnf.clauses_size
 max_answer = cnf.nv
 temperature = cnf.clauses_size
 t_coefficient = 0.99
-noise_possibility = 0.4
+noise_possibility = 0.1
 
 
 def convert_to_cnf(cnf_valuation):
@@ -56,12 +56,12 @@ def simulated_annealing(starting_point):
         fitness2 = fitness(temp_cnf_valuation)
         if fitness1 < fitness2:
             starting_point = temp_cnf_valuation
-            print(f'new value {fitness2}, {i}, {temperature}', file=sys.stderr)
+            print(f'new value {fitness2}, {i}, {temperature}')
         rand_num = random.random()
         pos = possibility(fitness1, fitness2)
         if rand_num <= pos:
             starting_point = temp_cnf_valuation
-            print(f'new value {fitness2}, {i}, {temperature}', file=sys.stderr)
+            print(f'new value {fitness2}, i : {i}, t : {temperature}, p:{pos}')
         # checking the end conditions:
         if fitness(starting_point) == max_answer:
             break
@@ -70,3 +70,4 @@ def simulated_annealing(starting_point):
 
 
 simulated_annealing(np.random.choice([0, 1], size=cnf.nv))
+#simulated_annealing([1 for i in range(cnf.nv)])
