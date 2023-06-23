@@ -65,6 +65,7 @@ def simulated_annealing(starting_point):
         if fitness1 < fitness2:
             starting_point = temp_cnf_valuation
             print(f'new value {fitness2}, i : {i}, t : {temperature}')
+            continue
         rand_num = random.random()
         pos = possibility(fitness1, fitness2)
         if rand_num <= pos:
