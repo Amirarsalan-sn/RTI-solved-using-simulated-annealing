@@ -4,6 +4,6 @@ This code provides a fast algorithm for evaluating a CNF and also provides two t
 commits(add_noise_2 worked better). You can use this code to design your own simulated annealing algorithm.
 
 # to install pysat library:
-'''
+```
 pip install python-sat
-'''
+```
